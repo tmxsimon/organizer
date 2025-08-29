@@ -1,0 +1,28 @@
+{
+  "translation": {
+    "common": {
+      "organizer": "Organizer",
+      "home": "Domů",
+      "tools": "Nástroje",
+      "profile": "Profil",
+      "version": "Verze"
+    },
+
+    "homepage": {
+      "welcome": "Vítejte v Organizer",
+      "organizerDesription": "Osobní organizér pro vaše každodenní úkoly"
+    },
+
+    "tools": {
+      "charts": "Grafy",
+      "trackers": "Sledovače",
+      "sprinters": "Sprintery",
+      "comparators": "Porovnávače",
+      "events": "Události"
+    },
+
+    "updates": {
+      "250829": "První verze Organizer. Základní funkce jsou implementovány a přidán nástroj „Porovnávač“."
+    }
+  }
+}

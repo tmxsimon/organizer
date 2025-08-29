@@ -1,0 +1,28 @@
+{
+  "translation": {
+    "common": {
+      "organizer": "Organizer",
+      "home": "Home",
+      "tools": "Tools",
+      "profile": "Profile",
+      "version": "Version"
+    },
+
+    "homepage": {
+      "welcome": "Welcome to Organizer",
+      "organizerDesription": "A personal organizer for your daily tasks"
+    },
+
+    "tools": {
+      "charts": "Charts",
+      "trackers": "Trackers",
+      "sprinters": "Sprinters",
+      "comparators": "Comparators",
+      "events": "Events"
+    },
+
+    "updates": {
+      "250829": "First version of Organizer. Basic functionality implemented, and the 'Comparator' tool added."
+    }
+  }
+}

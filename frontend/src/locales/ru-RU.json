@@ -1,0 +1,28 @@
+{
+  "translation": {
+    "common": {
+      "organizer": "Organizer",
+      "home": "Главная",
+      "tools": "Инструменты",
+      "profile": "Профиль",
+      "version": "Версия"
+    },
+
+    "homepage": {
+      "welcome": "Добро пожаловать в Organizer",
+      "organizerDesription": "Персональный организатор для каждодневных задач"
+    },
+
+    "tools": {
+      "charts": "Графики",
+      "trackers": "Трекеры",
+      "sprinters": "Спринтеры",
+      "comparators": "Сравнители",
+      "events": "События"
+    },
+
+    "updates": {
+      "250829": "Первая версия Organizer. Реализован минимальный функционал, добавлен инструмент «Сравнитель»."
+    }
+  }
+}
