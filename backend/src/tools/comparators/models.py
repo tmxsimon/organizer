@@ -21,6 +21,8 @@ class TypeEnum(str, Enum):
     con = "con"
 
 class ProCon(SQLModel, table=True):
+    __tablename__ = "pro_con"
+
     id: int | None = Field(default=None, primary_key=True)
     type: TypeEnum
     entry_id: int = Field(foreign_key="comparator_entry.id")

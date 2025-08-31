@@ -11,5 +11,5 @@ def get_session():
     with Session(engine) as session:
         yield session
 
-if __name__ == "__main__":  
+def init_db():
     SQLModel.metadata.create_all(engine)
