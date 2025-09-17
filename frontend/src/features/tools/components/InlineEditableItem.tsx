@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import Icon from "../../../components/Icon";
 import InlineEditable from "../../../components/InlineEditable";
 
@@ -18,6 +18,7 @@ type InlineEditableItemProps = Omit<
   deleteFunction: () => void;
   href?: string;
   size?: keyof typeof sizeMap;
+  extraButtons?: ReactNode;
   className?: string;
   classNameInlineEditable?: string;
   classNameText?: string;
@@ -29,6 +30,7 @@ const InlineEditableItem = ({
   deleteFunction,
   href,
   size = "md",
+  extraButtons,
   className = "",
   classNameInlineEditable = "",
   classNameText = "",
@@ -62,13 +64,14 @@ const InlineEditableItem = ({
         className={classNameInlineEditable}
         classNameText={classNameText}
       />
-      <div className="ml-2 flex h-full items-center gap-2">
-        <button className="h-8 cursor-pointer" onClick={deleteFunction}>
+      <div className="gap-base-s ml-2 flex h-8 items-center">
+        <button className="h-full cursor-pointer" onClick={deleteFunction}>
           <Icon name="delete" />
         </button>
-        <button className="h-8 cursor-pointer" onClick={handleOnClickEdit}>
+        <button className="h-full cursor-pointer" onClick={handleOnClickEdit}>
           {isEditMode ? <Icon name="check" /> : <Icon name="edit" />}
         </button>
+        {extraButtons}
       </div>
     </div>
   );

@@ -61,7 +61,7 @@ const ComparatorEntry = ({ entry, deleteFunction }: ComparatorEntryProps) => {
   };
 
   return (
-    <div className="rounded-base border-contrast border p-4">
+    <div className="rounded-base border-contrast p-base-s border">
       <InlineEditableItem
         value={entry.name}
         editFunction={handleEditEntry}

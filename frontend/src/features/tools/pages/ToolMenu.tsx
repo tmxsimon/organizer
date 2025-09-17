@@ -7,7 +7,7 @@ import api from "../../../lib/api";
 import { useEffect, useState } from "react";
 import Icon from "../../../components/Icon";
 import type { ToolType } from "../types";
-import ToolMenuItem from "./ToolMenuItem";
+import ToolMenuItem from "../components/ToolMenuItem";
 
 const ToolMenu = () => {
   const { t } = useTranslation();
@@ -68,7 +68,7 @@ const ToolMenu = () => {
           <Icon name="add" />
         </Button>
         <div className="mt-base gap-base flex w-full flex-col flex-wrap items-center">
-          <div className="rounded-base flex w-256 flex-col gap-2">
+          <div className="rounded-base gap-base-s flex w-256 flex-col">
             {tools.map((tool: ToolType) => {
               return (
                 <ToolMenuItem

@@ -13,16 +13,11 @@ def get_comparator_db(session: Session, id: int):
     
     structured_entries = []
     for entry in comparator.entries:
-        pros_cons = entry.pros_cons
-        pros_cons.sort(reverse=True, key=lambda pro_con: pro_con.id)
-
         structured_entries.append({
             "id": entry.id,
             "name": entry.name,
-            "pros_cons": pros_cons,
+            "pros_cons": entry.pros_cons,
         })
-
-    structured_entries.sort(reverse=True, key=lambda entry: entry["id"])
     
     structured_comparator = {
         "id": comparator.id,
@@ -88,7 +83,7 @@ def create_entry_db(
     name: str,
     comparator_id: int,
 ):
-    comparator = get_comparator_db(session=session, id=comparator_id)
+    comparator = session.get(Comparator, comparator_id)
     if comparator is None:
         return None
 

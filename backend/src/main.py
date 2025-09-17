@@ -2,7 +2,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .db import init_db
-from .tools.comparators.router import router as comparator_router
+from .tools.todos.router import router as todos_router
+from .tools.comparators.router import router as comparators_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -12,7 +13,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
-routers = [comparator_router]
+routers = [todos_router, comparators_router]
 for router in routers:
     app.include_router(router)
 

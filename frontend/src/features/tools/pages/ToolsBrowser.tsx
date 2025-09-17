@@ -24,7 +24,7 @@ const ToolsBrowser = () => {
   return (
     <section className="p-base flex w-full flex-col items-center justify-center">
       <h1 className="text-center text-6xl">{t("common.tools")}</h1>
-      <div className="mt-base flex flex-wrap justify-center gap-4">
+      <div className="mt-base gap-base flex flex-wrap justify-center">
         {/* <ToolsBrowserItem
           name={`${t("tools.charts")} (WIP)`}
           href="/tools/charts"
@@ -40,6 +40,11 @@ const ToolsBrowser = () => {
           href="/tools/sprinters"
           iconUrl="/src/features/tools/assets/sprinters.png"
         /> */}
+        <ToolsBrowserItem
+          name={t("tools.todos")}
+          href="/tools/todos"
+          iconUrl="/src/features/tools/assets/todos.png"
+        />
         <ToolsBrowserItem
           name={t("tools.comparators")}
           href="/tools/comparators"

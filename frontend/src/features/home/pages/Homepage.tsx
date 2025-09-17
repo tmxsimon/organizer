@@ -22,7 +22,7 @@ const Homepage = () => {
         <h1 className="text-center text-4xl">
           {t("common.version")} {VERSION}
         </h1>
-        <p className="max-w-196 text-center">{t("updates.250829")}</p>
+        <p className="max-w-196 text-center">{t(`updates.${VERSION}`)}</p>
       </section>
     </>
   );

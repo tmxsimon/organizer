@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import ComparatorEntry from "./ComparatorEntry";
+import ComparatorEntry from "../components/ComparatorEntry";
 import { type ComparatorEntryType } from "../types";
 import Button from "../../../../components/Button";
 import api from "../../../../lib/api";

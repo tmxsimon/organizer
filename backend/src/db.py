@@ -1,5 +1,6 @@
 from sqlmodel import SQLModel, Session, create_engine
 from .tools.models import *
+from .tools.todos.models import *
 from .tools.comparators.models import *
 
 db_file_name = "main.db"

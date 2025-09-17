@@ -1,5 +1,5 @@
 import api from "../../../lib/api";
-import InlineEditableItem from "../components/InlineEditableItem";
+import InlineEditableItem from "./InlineEditableItem";
 import type { ToolType } from "../types";
 
 type ToolMenuItemProps = {
@@ -21,9 +21,9 @@ const ToolMenuItem = ({
   //   transform: CSS.Transform.toString(transform),
   // };
 
-  const handleEditProCon = async (name: string) => {
+  const handleEdit = async (name: string) => {
     await api
-      .put(`/tools/comparators/${tool.id}`, null, {
+      .put(`/tools/${toolsType}/${tool.id}`, null, {
         params: { name: name },
       })
       .catch(function (error) {
@@ -36,10 +36,10 @@ const ToolMenuItem = ({
       {/* <div ref={setNodeRef} style={style} {...attributes} {...listeners}> */}
       <InlineEditableItem
         value={tool.name}
-        editFunction={handleEditProCon}
+        editFunction={handleEdit}
         deleteFunction={() => deleteFunction(tool.id)}
         href={`/tools/${toolsType}/${tool.id}`}
-        className="rounded-base border-contrast h-18 border px-2"
+        className="rounded-base border-contrast px-base-s h-18 border"
         classNameText="text-2xl "
       />
     </div>

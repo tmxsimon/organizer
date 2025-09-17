@@ -2,7 +2,9 @@
 @import "tailwindcss";
 
 @theme {
+  --spacing-base-s: 0.5rem;
   --spacing-base: 1rem;
+  --spacing-base-l: 1.5rem;
   --radius-base: 12px;
 }
 

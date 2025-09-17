@@ -17,12 +17,14 @@
       "charts": "Grafy",
       "trackers": "Sledovače",
       "sprinters": "Sprintery",
+      "todos": "Úkoly",
       "comparators": "Porovnávače",
       "events": "Události"
     },
 
     "updates": {
-      "250829": "První verze Organizer. Základní funkce jsou implementovány a přidán nástroj „Porovnávač“."
+      "250829": "První verze Organizer. Základní funkce jsou implementovány a přidán nástroj „Porovnávač“.",
+      "250917": "Přidán nový nástroj „Úkoly“."
     }
   }
 }

@@ -17,12 +17,14 @@
       "charts": "Charts",
       "trackers": "Trackers",
       "sprinters": "Sprinters",
+      "todos": "Todos",
       "comparators": "Comparators",
       "events": "Events"
     },
 
     "updates": {
-      "250829": "First version of Organizer. Basic functionality implemented, and the 'Comparator' tool added."
+      "250829": "First version of Organizer. Basic functionality implemented, and the 'Comparator' tool added.",
+      "250917": "Added a new 'Todo' tool."
     }
   }
 }
