@@ -1,33 +1,19 @@
 import Icon from "../../../../components/Icon";
-import api from "../../../../lib/api";
 import InlineEditableItem from "../../components/InlineEditableItem";
 import type { TodoEntryType } from "../types";
 
 type TodoEntryProps = {
   entry: TodoEntryType;
-  toggleFunction: (id: number) => void;
-  deleteFunction: (id: number) => void;
+  editFn: (data: { id: number; text: string }) => void;
+  toggleFn: (id: number) => void;
+  deleteFn: (id: number) => void;
 };
 
-const TodoEntry = ({
-  entry,
-  toggleFunction,
-  deleteFunction,
-}: TodoEntryProps) => {
-  const handleEditEntry = async (text: string) => {
-    await api
-      .put(`/tools/todos/entries/${entry.id}`, null, {
-        params: { text: text },
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-
+const TodoEntry = ({ entry, editFn, toggleFn, deleteFn }: TodoEntryProps) => {
   const extraButtons = (
     <button
       className="h-full cursor-pointer"
-      onClick={() => toggleFunction(entry.id)}
+      onClick={() => toggleFn(entry.id)}
     >
       {entry.is_done ? <Icon name="dismiss" /> : <Icon name="check" />}
     </button>
@@ -36,8 +22,8 @@ const TodoEntry = ({
   return (
     <InlineEditableItem
       value={entry.text}
-      editFunction={handleEditEntry}
-      deleteFunction={() => deleteFunction(entry.id)}
+      editFn={(text) => editFn({ id: entry.id, text: text })}
+      deleteFn={() => deleteFn(entry.id)}
       extraButtons={extraButtons}
       className="rounded-base p-base-s border"
       classNameText="text-2xl"

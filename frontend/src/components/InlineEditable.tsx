@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 type InlineEditableProps = {
   value: string;
   isEditMode: boolean;
-  onChange: (value: string) => void;
+  onValueChange: (value: string) => void;
   onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   href?: string;
   className?: string;
@@ -13,11 +13,12 @@ type InlineEditableProps = {
 const InlineEditable = ({
   value,
   isEditMode,
-  onChange,
+  onValueChange,
   onKeyDown,
   href,
   className = "",
   classNameText = "",
+  ...inputProps
 }: InlineEditableProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -31,9 +32,10 @@ const InlineEditable = ({
         <input
           className={`w-full ${classNameText}`}
           ref={inputRef}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => onValueChange(e.target.value)}
           onKeyDown={onKeyDown}
           value={value}
+          {...inputProps}
         />
       ) : href ? (
         <a

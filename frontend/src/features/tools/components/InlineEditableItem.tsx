@@ -14,8 +14,8 @@ type InlineEditableItemProps = Omit<
   "size"
 > & {
   value: string;
-  editFunction: (value: string) => void;
-  deleteFunction: () => void;
+  editFn: (value: string) => void;
+  deleteFn: () => void;
   href?: string;
   size?: keyof typeof sizeMap;
   extraButtons?: ReactNode;
@@ -26,21 +26,22 @@ type InlineEditableItemProps = Omit<
 
 const InlineEditableItem = ({
   value,
-  editFunction,
-  deleteFunction,
+  editFn,
+  deleteFn,
   href,
   size = "md",
   extraButtons,
   className = "",
   classNameInlineEditable = "",
   classNameText = "",
+  ...inputProps
 }: InlineEditableItemProps) => {
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
   const [text, setText] = useState<string>(value);
 
   const handleOnClickEdit = () => {
     if (isEditMode) {
-      editFunction(text);
+      editFn(text);
     }
     setIsEditMode(!isEditMode);
   };
@@ -59,13 +60,14 @@ const InlineEditableItem = ({
         href={href}
         value={text}
         isEditMode={isEditMode}
-        onChange={setText}
+        onValueChange={setText}
         onKeyDown={handleOnKeyDown}
         className={classNameInlineEditable}
         classNameText={classNameText}
+        {...inputProps}
       />
       <div className="gap-base-s ml-2 flex h-8 items-center">
-        <button className="h-full cursor-pointer" onClick={deleteFunction}>
+        <button className="h-full cursor-pointer" onClick={deleteFn}>
           <Icon name="delete" />
         </button>
         <button className="h-full cursor-pointer" onClick={handleOnClickEdit}>

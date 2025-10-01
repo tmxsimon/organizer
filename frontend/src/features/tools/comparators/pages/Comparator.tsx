@@ -2,23 +2,25 @@ import { useParams } from "react-router-dom";
 import ComparatorEntry from "../components/ComparatorEntry";
 import { type ComparatorEntryType } from "../types";
 import Button from "../../../../components/Button";
-import api from "../../../../lib/api";
 import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { fetchComparator } from "../services";
 import Icon from "../../../../components/Icon";
+import { useComparator } from "../hooks/useComparator";
 
 const Comparator = () => {
-  const { toolId: comparatorId } = useParams();
+  const { toolId } = useParams();
+  const id = parseInt(toolId!);
 
   const {
-    data: comparator,
+    comparator,
     isLoading,
     error,
-  } = useQuery({
-    queryKey: ["comparator", comparatorId],
-    queryFn: () => fetchComparator(parseInt(comparatorId!)),
-  });
+    addEntry,
+    editEntry,
+    deleteEntry,
+    addProCon,
+    editProCon,
+    deleteProCon,
+  } = useComparator(id);
 
   const [entries, setEntries] = useState<ComparatorEntryType[]>(
     comparator?.entries || [],
@@ -33,36 +35,15 @@ const Comparator = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>error</div>;
 
-  const handleAddEntry = async () => {
-    await api
-      .post(`/tools/comparators/${comparatorId}/entries`, null, {
-        params: {
-          name: "new entry",
-        },
-      })
-      .then(function (response) {
-        setEntries([
-          {
-            id: response.data.entry.id,
-            name: response.data.entry.name,
-            pros_cons: response.data.pros_cons,
-          },
-          ...entries,
-        ]);
-      });
-  };
-
-  const handleDeleteEntry = async (id: number) => {
-    await api.delete(`/tools/comparators/entries/${id}`).then(function () {
-      setEntries(entries.filter((entry) => entry.id != id));
-    });
-  };
-
   const entriesMapped = entries.map((entry: ComparatorEntryType) => (
     <ComparatorEntry
       key={entry.id}
       entry={entry}
-      deleteFunction={handleDeleteEntry}
+      editFn={(data) => editEntry.mutate(data)}
+      deleteFn={(id) => deleteEntry.mutate(id)}
+      addProConFn={(data) => addProCon.mutate(data)}
+      editProConFn={(data) => editProCon.mutate(data)}
+      deleteProConFn={(id) => deleteProCon.mutate(id)}
     />
   ));
 
@@ -71,7 +52,11 @@ const Comparator = () => {
       {comparator && (
         <>
           <h1 className="text-4xl">{comparator.name}</h1>
-          <Button size="lg" className="mt-base" onClick={handleAddEntry}>
+          <Button
+            size="lg"
+            className="mt-base"
+            onClick={() => addEntry.mutate()}
+          >
             <Icon name="add" />
           </Button>
           <div className="gap-base mt-base flex w-full max-w-256 flex-col">

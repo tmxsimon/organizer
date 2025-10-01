@@ -1,28 +1,18 @@
-import api from "../../../../lib/api";
 import type { ProConType } from "../types";
 import InlineEditableItem from "../../components/InlineEditableItem";
 
 type ProConItemProps = React.InputHTMLAttributes<HTMLInputElement> & {
   proCon: ProConType;
-  deleteFunction: (id: number) => void;
+  editFn: (data: { id: number; text: string }) => void;
+  deleteFn: (id: number) => void;
 };
 
-const ProConItem = ({ proCon, deleteFunction }: ProConItemProps) => {
-  const handleEditProCon = async (text: string) => {
-    await api
-      .put(`/tools/comparators/pros-cons/${proCon.id}`, null, {
-        params: { text: text },
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-
+const ProConItem = ({ proCon, editFn, deleteFn }: ProConItemProps) => {
   return (
     <InlineEditableItem
       value={proCon.text}
-      editFunction={handleEditProCon}
-      deleteFunction={() => deleteFunction(proCon.id)}
+      editFn={(text: string) => editFn({ id: proCon.id, text: text })}
+      deleteFn={() => deleteFn(proCon.id)}
       className="h-full"
     />
   );

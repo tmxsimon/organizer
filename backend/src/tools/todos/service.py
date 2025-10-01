@@ -120,6 +120,7 @@ def update_entry_db(
     if entry is None:
         return None
     
+    
     if text:
         entry.text = text
     if is_done:

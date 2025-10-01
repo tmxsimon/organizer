@@ -1,5 +1,3 @@
-import { useState } from "react";
-import api from "../../../../lib/api";
 import ProConItem from "./ProConItem";
 import Icon from "../../../../components/Icon";
 import InlineEditableItem from "../../components/InlineEditableItem";
@@ -7,65 +5,34 @@ import type { ComparatorEntryType, ProConType } from "../types";
 
 type ComparatorEntryProps = {
   entry: ComparatorEntryType;
-  deleteFunction: (id: number) => void;
+  editFn: (data: { id: number; name: string }) => void;
+  deleteFn: (id: number) => void;
+  addProConFn: (data: { entryId: number; type: "pro" | "con" }) => void;
+  editProConFn: (data: { id: number; text: string }) => void;
+  deleteProConFn: (id: number) => void;
 };
 
-const ComparatorEntry = ({ entry, deleteFunction }: ComparatorEntryProps) => {
-  const [prosCons, setProsCons] = useState<ProConType[]>(entry.pros_cons);
-
-  const pros = prosCons.filter((proCon: ProConType) => proCon.type == "pro");
-  const cons = prosCons.filter((proCon: ProConType) => proCon.type == "con");
-
-  const handleEditEntry = async (name: string) => {
-    await api
-      .put(`/tools/comparators/entries/${entry.id}`, null, {
-        params: { name: name },
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-
-  const handleAddProCon = async (type: "pro" | "con") => {
-    await api
-      .post(`/tools/comparators/entries/${entry.id}`, null, {
-        params: {
-          text: `new ${type}`,
-          type: type,
-        },
-      })
-      .then(function (response) {
-        setProsCons([
-          {
-            id: response.data[type].id,
-            text: response.data[type].text,
-            type: type,
-          },
-          ...prosCons,
-        ]);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-
-  const handleDeleteProCon = async (id: number) => {
-    await api
-      .delete(`/tools/comparators/pros-cons/${id}`)
-      .then(function () {
-        setProsCons(prosCons.filter((proCon) => proCon.id != id));
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+const ComparatorEntry = ({
+  entry,
+  editFn,
+  deleteFn,
+  addProConFn,
+  editProConFn,
+  deleteProConFn,
+}: ComparatorEntryProps) => {
+  const pros = entry.pros_cons.filter(
+    (proCon: ProConType) => proCon.type == "pro",
+  );
+  const cons = entry.pros_cons.filter(
+    (proCon: ProConType) => proCon.type == "con",
+  );
 
   return (
     <div className="rounded-base border-contrast p-base-s border">
       <InlineEditableItem
         value={entry.name}
-        editFunction={handleEditEntry}
-        deleteFunction={() => deleteFunction(entry.id)}
+        editFn={(name) => editFn({ id: entry.id, name: name })}
+        deleteFn={() => deleteFn(entry.id)}
         classNameText="text-2xl"
       />
       <div>
@@ -73,7 +40,7 @@ const ComparatorEntry = ({ entry, deleteFunction }: ComparatorEntryProps) => {
           <h2 className="text-good text-2xl">Pros</h2>
           <button
             className="size-8 cursor-pointer"
-            onClick={() => handleAddProCon("pro")}
+            onClick={() => addProConFn({ entryId: entry.id, type: "pro" })}
           >
             <Icon name="add" />
           </button>
@@ -81,7 +48,11 @@ const ComparatorEntry = ({ entry, deleteFunction }: ComparatorEntryProps) => {
         <ul>
           {pros.map((pro: ProConType) => (
             <li key={pro.id} className="ml-4 list-disc">
-              <ProConItem proCon={pro} deleteFunction={handleDeleteProCon} />
+              <ProConItem
+                proCon={pro}
+                editFn={(data) => editProConFn(data)}
+                deleteFn={(id) => deleteProConFn(id)}
+              />
             </li>
           ))}
         </ul>
@@ -91,7 +62,7 @@ const ComparatorEntry = ({ entry, deleteFunction }: ComparatorEntryProps) => {
           <h2 className="text-bad text-2xl">Cons</h2>
           <button
             className="size-8 cursor-pointer"
-            onClick={() => handleAddProCon("con")}
+            onClick={() => addProConFn({ entryId: entry.id, type: "con" })}
           >
             <Icon name="add" />
           </button>
@@ -99,7 +70,11 @@ const ComparatorEntry = ({ entry, deleteFunction }: ComparatorEntryProps) => {
         <ul>
           {cons.map((con: ProConType) => (
             <li key={con.id} className="rounded-base ml-4 list-disc">
-              <ProConItem proCon={con} deleteFunction={handleDeleteProCon} />
+              <ProConItem
+                proCon={con}
+                editFn={(data) => editProConFn(data)}
+                deleteFn={(id) => deleteProConFn(id)}
+              />
             </li>
           ))}
         </ul>

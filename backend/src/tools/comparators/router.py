@@ -142,7 +142,7 @@ async def update_entry(
 # Pros and Cons
 
 
-@router.post("/entries/{entry_id}")
+@router.post("/entries/{entry_id}/pros-cons")
 async def create_entry_pro_con(
     entry_id: int,
     type: Literal["pro", "con"],
