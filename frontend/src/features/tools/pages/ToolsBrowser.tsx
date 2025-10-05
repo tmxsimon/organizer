@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 type ToolsBrowserItemProps = {
   name: string;
@@ -8,14 +9,14 @@ type ToolsBrowserItemProps = {
 
 const ToolsBrowserItem = ({ name, href, iconUrl }: ToolsBrowserItemProps) => {
   return (
-    <a href={href} className="group rounded-base text-center">
+    <Link to={href} className="group rounded-base text-center">
       <img
         src={iconUrl}
         alt={`${name} icon`}
         className="rounded-base size-48 object-cover"
       />
       <p className="group-hover:underline">{name}</p>
-    </a>
+    </Link>
   );
 };
 

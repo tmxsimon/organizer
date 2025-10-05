@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 type InlineEditableProps = {
   value: string;
@@ -38,12 +39,12 @@ const InlineEditable = ({
           {...inputProps}
         />
       ) : href ? (
-        <a
-          href={href}
+        <Link
+          to={href}
           className={`flex h-full w-full items-center overflow-hidden hover:underline ${classNameText}`}
         >
           {value}
-        </a>
+        </Link>
       ) : (
         <span className={`w-full overflow-hidden ${classNameText}`}>
           {value}
