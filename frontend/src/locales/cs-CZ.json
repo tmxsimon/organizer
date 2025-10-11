@@ -5,7 +5,9 @@
       "home": "Domů",
       "tools": "Nástroje",
       "profile": "Profil",
-      "version": "Verze"
+      "version": "Verze",
+      "inProgress": "Probíhá",
+      "done": "Hotovo"
     },
 
     "homepage": {

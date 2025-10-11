@@ -5,7 +5,9 @@
       "home": "Home",
       "tools": "Tools",
       "profile": "Profile",
-      "version": "Version"
+      "version": "Version",
+      "inProgress": "In Progress",
+      "done": "Done"
     },
 
     "homepage": {

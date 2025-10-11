@@ -3,8 +3,10 @@ import { useTodo } from "../hooks/useTodo";
 import Button from "../../../../components/Button";
 import Icon from "../../../../components/Icon";
 import TodoEntry from "../components/TodoEntry";
+import { useTranslation } from "react-i18next";
 
 const Todo = () => {
+  const { t } = useTranslation();
   const { toolId } = useParams();
   const id = parseInt(toolId!);
 
@@ -34,13 +36,13 @@ const Todo = () => {
               className={`${isDone && "text-neutral-500"} cursor-pointer`}
               onClick={() => setIsDone(false)}
             >
-              In Progress
+              {t("common.inProgress")}
             </button>
             <button
               className={`${!isDone && "text-neutral-500"} cursor-pointer`}
               onClick={() => setIsDone(true)}
             >
-              Done
+              {t("common.done")}
             </button>
           </div>
 

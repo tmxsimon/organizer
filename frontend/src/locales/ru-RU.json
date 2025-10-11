@@ -5,7 +5,9 @@
       "home": "Главная",
       "tools": "Инструменты",
       "profile": "Профиль",
-      "version": "Версия"
+      "version": "Версия",
+      "inProgress": "В процессе",
+      "done": "Готово"
     },
 
     "homepage": {

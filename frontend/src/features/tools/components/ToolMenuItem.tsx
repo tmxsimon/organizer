@@ -1,4 +1,3 @@
-import api from "../../../lib/api";
 import InlineEditableItem from "./InlineEditableItem";
 import type { ToolType } from "../types";
 
