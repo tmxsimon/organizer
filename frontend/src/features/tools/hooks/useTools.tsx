@@ -19,7 +19,7 @@ export function useTools(type: string) {
   const addEntry = useMutation({
     mutationFn: () =>
       api.post(`${PATH}/${type}`, null, {
-        params: { name: "new tool", description: "" },
+        params: { name: "", description: "" },
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["tools", type] });

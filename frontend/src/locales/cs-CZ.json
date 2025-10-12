@@ -19,9 +19,17 @@
       "charts": "Grafy",
       "trackers": "Sledovače",
       "sprinters": "Sprintery",
-      "todos": "Úkoly",
-      "comparators": "Porovnávače",
-      "events": "Události"
+      "events": "Události",
+
+      "todos": {
+        "todos": "Úkoly"
+      },
+
+      "comparators": {
+        "comparators": "Porovnávače",
+        "pros": "Výhody",
+        "cons": "Nevýhody"
+      }
     },
 
     "updates": {

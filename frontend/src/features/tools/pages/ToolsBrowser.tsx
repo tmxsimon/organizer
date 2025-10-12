@@ -42,12 +42,12 @@ const ToolsBrowser = () => {
           iconUrl="/src/features/tools/assets/sprinters.png"
         /> */}
         <ToolsBrowserItem
-          name={t("tools.todos")}
+          name={t("tools.todos.todos")}
           href="/tools/todos"
           iconUrl="/src/features/tools/assets/todos.png"
         />
         <ToolsBrowserItem
-          name={t("tools.comparators")}
+          name={t("tools.comparators.comparators")}
           href="/tools/comparators"
           iconUrl="/src/features/tools/assets/comparators.png"
         />

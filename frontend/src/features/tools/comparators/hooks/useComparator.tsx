@@ -19,7 +19,7 @@ export function useComparator(comparatorId: number) {
   const addEntry = useMutation({
     mutationFn: () =>
       api.post(`${PATH}/${comparatorId}/entries`, null, {
-        params: { name: "new comparator" },
+        params: { name: "" },
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["comparator", comparatorId] });
@@ -47,7 +47,7 @@ export function useComparator(comparatorId: number) {
     mutationFn: ({ entryId, type }: { entryId: number; type: "pro" | "con" }) =>
       api.post(`${PATH}/entries/${entryId}/pros-cons`, null, {
         params: {
-          text: `new ${type}`,
+          text: "",
           type: type,
         },
       }),

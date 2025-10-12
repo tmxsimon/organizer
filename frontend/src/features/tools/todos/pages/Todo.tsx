@@ -54,7 +54,7 @@ const Todo = () => {
             <Icon name="add" />
           </Button>
 
-          <div className="gap-base mt-base flex w-full max-w-256 flex-col">
+          <div className="gap-base-s mt-base flex w-full max-w-256 flex-col">
             {entries.map((entry) => (
               <TodoEntry
                 key={entry.id}

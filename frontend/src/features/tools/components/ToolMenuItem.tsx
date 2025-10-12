@@ -15,16 +15,14 @@ const ToolMenuItem = ({
   deleteFn,
 }: ToolMenuItemProps) => {
   return (
-    <div>
-      <InlineEditableItem
-        value={tool.name}
-        editFn={(name) => editFn({ id: tool.id, name: name })}
-        deleteFn={() => deleteFn(tool.id)}
-        href={`/tools/${toolsType}/${tool.id}`}
-        className="rounded-base border-contrast px-base-s h-18 border"
-        classNameText="text-2xl "
-      />
-    </div>
+    <InlineEditableItem
+      value={tool.name}
+      editFn={(name) => editFn({ id: tool.id, name: name })}
+      deleteFn={() => deleteFn(tool.id)}
+      href={`/tools/${toolsType}/${tool.id}`}
+      className="rounded-base border-contrast px-base-s h-16 border"
+      classNameText="text-2xl "
+    />
   );
 };
 

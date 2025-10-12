@@ -2,6 +2,7 @@ import ProConItem from "./ProConItem";
 import Icon from "../../../../components/Icon";
 import InlineEditableItem from "../../components/InlineEditableItem";
 import type { ComparatorEntryType, ProConType } from "../types";
+import { useTranslation } from "react-i18next";
 
 type ComparatorEntryProps = {
   entry: ComparatorEntryType;
@@ -20,6 +21,8 @@ const ComparatorEntry = ({
   editProConFn,
   deleteProConFn,
 }: ComparatorEntryProps) => {
+  const { t } = useTranslation();
+
   const pros = entry.pros_cons.filter(
     (proCon: ProConType) => proCon.type == "pro",
   );
@@ -37,7 +40,7 @@ const ComparatorEntry = ({
       />
       <div>
         <div className="flex items-center justify-between">
-          <h2 className="text-good text-2xl">Pros</h2>
+          <h2 className="text-good text-2xl">{t("tools.comparators.pros")}</h2>
           <button
             className="size-8 cursor-pointer"
             onClick={() => addProConFn({ entryId: entry.id, type: "pro" })}
@@ -59,7 +62,7 @@ const ComparatorEntry = ({
       </div>
       <div>
         <div className="flex items-center justify-between">
-          <h2 className="text-bad text-2xl">Cons</h2>
+          <h2 className="text-bad text-2xl">{t("tools.comparators.cons")}</h2>
           <button
             className="size-8 cursor-pointer"
             onClick={() => addProConFn({ entryId: entry.id, type: "con" })}

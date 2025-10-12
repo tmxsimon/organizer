@@ -36,12 +36,14 @@ const InlineEditableItem = ({
   classNameText = "",
   ...inputProps
 }: InlineEditableItemProps) => {
-  const [isEditMode, setIsEditMode] = useState<boolean>(false);
+  const [isEditMode, setIsEditMode] = useState<boolean>(!value);
   const [text, setText] = useState<string>(value);
 
   const handleOnClickEdit = () => {
-    if (isEditMode) {
-      editFn(text);
+    if (isEditMode) editFn(text);
+    if (!text) {
+      setText("text");
+      editFn("text");
     }
     setIsEditMode(!isEditMode);
   };

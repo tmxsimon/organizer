@@ -19,7 +19,9 @@ const ToolMenu = () => {
   return (
     <>
       <section className="p-base flex w-full flex-col items-center justify-center">
-        <h1 className="text-center text-6xl">{t(`tools.${toolsType}`)}</h1>
+        <h1 className="text-center text-6xl">
+          {t(`tools.${toolsType}.${toolsType}`)}
+        </h1>
         <Button
           size="lg"
           className="mt-base text-4xl"

@@ -19,9 +19,17 @@
       "charts": "Charts",
       "trackers": "Trackers",
       "sprinters": "Sprinters",
-      "todos": "Todos",
-      "comparators": "Comparators",
-      "events": "Events"
+      "events": "Events",
+
+      "todos": {
+        "todos": "Todos"
+      },
+
+      "comparators": {
+        "comparators": "Comparators",
+        "pros": "Pros",
+        "cons": "Cons"
+      }
     },
 
     "updates": {

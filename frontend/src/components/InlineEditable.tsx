@@ -36,6 +36,7 @@ const InlineEditable = ({
           onChange={(e) => onValueChange(e.target.value)}
           onKeyDown={onKeyDown}
           value={value}
+          minLength={1}
           {...inputProps}
         />
       ) : href ? (

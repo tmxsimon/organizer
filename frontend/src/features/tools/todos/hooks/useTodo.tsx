@@ -23,7 +23,7 @@ export function useTodo(todoId: number) {
   const addEntry = useMutation({
     mutationFn: () =>
       api.post(`${PATH}/${todoId}/entries`, null, {
-        params: { text: "new todo" },
+        params: { text: "" },
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["todo", todoId] });

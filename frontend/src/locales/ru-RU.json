@@ -19,9 +19,17 @@
       "charts": "Графики",
       "trackers": "Трекеры",
       "sprinters": "Спринтеры",
-      "todos": "Задачи",
-      "comparators": "Сравнители",
-      "events": "События"
+      "events": "События",
+
+      "todos": {
+        "todos": "Задачи"
+      },
+
+      "comparators": {
+        "comparators": "Сравнители",
+        "pros": "Плюсы",
+        "cons": "Минусы"
+      }
     },
 
     "updates": {
