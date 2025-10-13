@@ -51,7 +51,7 @@ const Comparator = () => {
     <section className="p-base flex w-full flex-col items-center justify-center">
       {comparator && (
         <>
-          <h1 className="text-4xl">{comparator.name}</h1>
+          <h1 className="max-w-256 text-4xl break-all">{comparator.name}</h1>
           <Button
             size="lg"
             className="mt-base"

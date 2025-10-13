@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Icon from "../../../components/Icon";
 import InlineEditable from "../../../components/InlineEditable";
 
@@ -39,11 +39,21 @@ const InlineEditableItem = ({
   const [isEditMode, setIsEditMode] = useState<boolean>(!value);
   const [text, setText] = useState<string>(value);
 
+  useEffect(() => {
+    if (!value) {
+      editFn("text");
+    }
+  }, [value]);
+
   const handleOnClickEdit = () => {
-    if (isEditMode) editFn(text);
-    if (!text) {
+    const textTrimmed = text.trim();
+
+    if (!textTrimmed) {
       setText("text");
       editFn("text");
+    } else if (isEditMode) {
+      setText(textTrimmed);
+      editFn(textTrimmed);
     }
     setIsEditMode(!isEditMode);
   };
@@ -56,7 +66,7 @@ const InlineEditableItem = ({
 
   return (
     <div
-      className={`bg-main flex w-full items-center justify-between ${sizeMap[size]} ${className}`}
+      className={`bg-main flex h-full w-full items-center justify-between ${sizeMap[size]} ${className}`}
     >
       <InlineEditable
         href={href}
@@ -64,8 +74,8 @@ const InlineEditableItem = ({
         isEditMode={isEditMode}
         onValueChange={setText}
         onKeyDown={handleOnKeyDown}
-        className={classNameInlineEditable}
-        classNameText={classNameText}
+        className={"h-full " + classNameInlineEditable}
+        classNameText={"break-all " + classNameText}
         {...inputProps}
       />
       <div className="gap-base-s ml-2 flex h-8 items-center">
