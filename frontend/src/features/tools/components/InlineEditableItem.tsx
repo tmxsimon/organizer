@@ -22,6 +22,7 @@ type InlineEditableItemProps = Omit<
   className?: string;
   classNameInlineEditable?: string;
   classNameText?: string;
+  classNameButtons?: string;
 };
 
 const InlineEditableItem = ({
@@ -34,6 +35,7 @@ const InlineEditableItem = ({
   className = "",
   classNameInlineEditable = "",
   classNameText = "",
+  classNameButtons = "h-8",
   ...inputProps
 }: InlineEditableItemProps) => {
   const [isEditMode, setIsEditMode] = useState<boolean>(!value);
@@ -78,7 +80,9 @@ const InlineEditableItem = ({
         classNameText={"break-all " + classNameText}
         {...inputProps}
       />
-      <div className="gap-base-s ml-2 flex h-8 items-center">
+      <div
+        className={`gap-base-s ml-2 flex items-center justify-center ${classNameButtons}`}
+      >
         <button className="h-full cursor-pointer" onClick={deleteFn}>
           <Icon name="delete" />
         </button>

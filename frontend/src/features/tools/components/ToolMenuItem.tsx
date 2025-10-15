@@ -20,8 +20,9 @@ const ToolMenuItem = ({
       editFn={(name) => editFn({ id: tool.id, name: name })}
       deleteFn={() => deleteFn(tool.id)}
       href={`/tools/${toolsType}/${tool.id}`}
-      className="rounded-base border-contrast px-base-s h-16 border"
-      classNameText="text-2xl "
+      className="rounded-base border-contrast p-base-s border"
+      classNameText="text-3xl"
+      classNameButtons="h-10"
     />
   );
 };
